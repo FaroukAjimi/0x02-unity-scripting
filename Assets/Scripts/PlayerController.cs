@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 pos = this.transform.position;
-        pos.y = 1.2F;
+        pos.y = 1.200F;
         this.transform.position = pos;
         if (Input.GetKey(KeyCode.Q))
         {
