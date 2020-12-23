@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     private Rigidbody rb;
     private int score = 0;
     public int health = 5;
+    private Scene scene;
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
@@ -23,11 +26,26 @@ public class PlayerController : MonoBehaviour
             health -= 1;
             Debug.Log("Health: " + health);
         }
+        if (other.tag == "Goal")
+        {
+            Debug.Log("You win!");
+        }
         
+    }
+    void Update()
+    {
+        if (health == 0)
+        {
+           Debug.Log("Game Over!");
+           health = 5;
+           score = 0;
+           SceneManager.LoadScene(scene.name);
+        }
     }
     void Start()
     {
-       rb = GetComponent<Rigidbody>();
+        scene = SceneManager.GetActiveScene();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
