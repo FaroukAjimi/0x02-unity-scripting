@@ -6,7 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private Rigidbody rb;
+    private int score = 0;
     // Start is called before the first frame update
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Pickup")
+        {
+            this.score += 1;
+            Debug.Log("Score: " + score);
+            Destroy(other);
+        }
+        
+    }
     void Start()
     {
        rb = GetComponent<Rigidbody>();
