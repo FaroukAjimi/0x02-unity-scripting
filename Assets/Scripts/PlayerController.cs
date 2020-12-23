@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
         {
             this.score += 1;
             Debug.Log("Score: " + score);
+            other.GetComponent<Renderer>().enabled = false;
             Destroy(other);
         }
         
